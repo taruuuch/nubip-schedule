@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Model
 {
@@ -8,5 +9,8 @@ namespace Model
         public int Number { get; set; }
         public TimeSpan Start { get; set; }
         public TimeSpan End { get; set; }
+
+        public ICollection<Lesson> Lessons { get; set; }
+        public ICollection<Request> Requests { get; set; }
     }
 }

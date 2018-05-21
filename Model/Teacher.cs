@@ -14,5 +14,9 @@ namespace Model
         public string Site { get; set; }
         public int DegreeId { get; set; }
         public int AcademicId { get; set; }
+
+        public Departament Departament { get; set; }
+        public Degree Degree { get; set; }
+        public Academic Academic { get; set; }
     }
 }

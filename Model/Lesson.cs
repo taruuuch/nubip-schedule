@@ -13,5 +13,11 @@ namespace Model
         public string Day { get; set; }
         public int Week { get; set; }
         public int SubGroup { get; set; }
+
+        public Curriculum Curriculum { get; set; }
+        public Group Group { get; set; }
+        public Teacher Teacher { get; set; }
+        public Auditorium Auditorium { get; set; }
+        public Time Time { get; set; }
     }
 }

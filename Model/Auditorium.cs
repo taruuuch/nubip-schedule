@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Model
 {
@@ -9,5 +10,8 @@ namespace Model
         public int BuildingId { get; set; }
         public int SeatseCount { get; set; }
         public int AuditoriumTypeId { get; set; }
+
+        public AuditoriumType AuditoriumType { get; set; }
+        public ICollection<Lesson> Lessons { get; set; }
     }
 }

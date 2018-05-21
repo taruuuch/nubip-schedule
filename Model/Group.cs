@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Model
 {
@@ -12,5 +13,9 @@ namespace Model
         public string EducationForm { get; set; }
         public int StudentCount { get; set; }
         public bool IsActive { get; set; }
+
+        public Speciality Speciality { get; set; }
+        public Teacher Teacher { get; set; }
+        public ICollection<Lesson> Lessons { get; set; }
     }
 }

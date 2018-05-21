@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Model
 {
@@ -13,5 +14,8 @@ namespace Model
         public string Phone { get; set; }
         public string Email { get; set; }
         public string Site { get; set; }
+
+        public Building Building { get; set; }
+        public ICollection<Speciality> Specialities { get; set; }
     }
 }

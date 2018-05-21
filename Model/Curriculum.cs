@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Model
 {
@@ -10,5 +11,10 @@ namespace Model
         public int LectionCount { get; set; }
         public int LabaratorCount { get; set; }
         public int Semester { get; set; }
+
+        public Speciality Speciality { get; set; }
+        public Departament Departament { get; set; }
+        public Subject Subject { get; set; }
+        public ICollection<Lesson> Lessons { get; set; }
     }
 }

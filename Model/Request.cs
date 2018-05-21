@@ -11,5 +11,8 @@ namespace Model
         public DateTime To { get; set; }
         public DateTime RequestTime { get; set; }
         public bool Status { get; set; }
+
+        public Lesson Lesson { get; set; }
+        public Time Time { get; set; }
     }
 }
