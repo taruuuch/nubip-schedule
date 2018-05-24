@@ -4,6 +4,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Remove="Migrations\20180521113520_InitialCreate.cs" />
+    <Compile Remove="Migrations\20180524062935_UpdateNamingTable.cs" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.1.0-rc1-final" />

@@ -3,15 +3,17 @@ using System;
 using DBRepository;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace DBRepository.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    partial class ApplicationContextModelSnapshot : ModelSnapshot
+    [Migration("20180524062126_UpdateNaming")]
+    partial class UpdateNaming
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -141,30 +143,6 @@ namespace DBRepository.Migrations
                     b.ToTable("Departament");
                 });
 
-            modelBuilder.Entity("Model.EducationForm", b =>
-                {
-                    b.Property<int>("EducationFormId")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("Title");
-
-                    b.HasKey("EducationFormId");
-
-                    b.ToTable("EducationForm");
-                });
-
-            modelBuilder.Entity("Model.EducationLevel", b =>
-                {
-                    b.Property<int>("EducationLevelId")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("Title");
-
-                    b.HasKey("EducationLevelId");
-
-                    b.ToTable("EducationLevel");
-                });
-
             modelBuilder.Entity("Model.Faculty", b =>
                 {
                     b.Property<int>("FacultyId")
@@ -198,9 +176,9 @@ namespace DBRepository.Migrations
                     b.Property<int>("GroupId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int>("EducationFormId");
+                    b.Property<string>("EducationForm");
 
-                    b.Property<int>("EducationLevelId");
+                    b.Property<string>("EducationLevel");
 
                     b.Property<bool>("IsActive");
 
@@ -213,10 +191,6 @@ namespace DBRepository.Migrations
                     b.Property<string>("Title");
 
                     b.HasKey("GroupId");
-
-                    b.HasIndex("EducationFormId");
-
-                    b.HasIndex("EducationLevelId");
 
                     b.HasIndex("SpecialityId");
 
@@ -421,16 +395,6 @@ namespace DBRepository.Migrations
 
             modelBuilder.Entity("Model.Group", b =>
                 {
-                    b.HasOne("Model.EducationForm", "EducationForm")
-                        .WithMany("Groups")
-                        .HasForeignKey("EducationFormId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("Model.EducationLevel", "EducationLevel")
-                        .WithMany("Groups")
-                        .HasForeignKey("EducationLevelId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
                     b.HasOne("Model.Speciality", "Speciality")
                         .WithMany("Groups")
                         .HasForeignKey("SpecialityId")

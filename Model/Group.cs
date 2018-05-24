@@ -9,13 +9,16 @@ namespace Model
         public string Title { get; set; }
         public int SpecialityId { get; set; }
         public int TeacherId { get; set; }
-        public string EducationLevel { get; set; }
-        public string EducationForm { get; set; }
+        public int EducationLevelId { get; set; }
+        public int EducationFormId { get; set; }
         public int StudentCount { get; set; }
         public bool IsActive { get; set; }
 
         public Speciality Speciality { get; set; }
         public Teacher Teacher { get; set; }
+        public EducationLevel EducationLevel { get; set; }
+        public EducationForm EducationForm { get; set; }
+        
         public ICollection<Lesson> Lessons { get; set; }
     }
 }
