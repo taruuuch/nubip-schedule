@@ -16,3 +16,4 @@ namespace Model
         public Time Time { get; set; }
     }
 }
+
