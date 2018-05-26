@@ -7,7 +7,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DBRepository", "DBRepositor
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Model", "Model\Model.csproj", "{F6745E9E-9301-40A8-9ECD-9799D702F04E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NubipSchedule", "NubipSchedule\NubipSchedule.csproj", "{A6EA76EE-C760-444C-BFAB-419BC13AE4BB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NubipSchedule", "NubipSchedule\NubipSchedule.csproj", "{A6EA76EE-C760-444C-BFAB-419BC13AE4BB}"
+	ProjectSection(ProjectDependencies) = postProject
+		{F6745E9E-9301-40A8-9ECD-9799D702F04E} = {F6745E9E-9301-40A8-9ECD-9799D702F04E}
+		{354FB2E4-EFB4-4E0D-ABCD-88E7E83F98D8} = {354FB2E4-EFB4-4E0D-ABCD-88E7E83F98D8}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
