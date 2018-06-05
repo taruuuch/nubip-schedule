@@ -1,5 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace Model
 {
@@ -14,11 +14,16 @@ namespace Model
         public int StudentCount { get; set; }
         public bool IsActive { get; set; }
 
+        [JsonIgnore]
         public Speciality Speciality { get; set; }
+        [JsonIgnore]
         public Teacher Teacher { get; set; }
+        [JsonIgnore]
         public EducationLevel EducationLevel { get; set; }
+        [JsonIgnore]
         public EducationForm EducationForm { get; set; }
         
+        [JsonIgnore]
         public ICollection<Lesson> Lessons { get; set; }
     }
 }

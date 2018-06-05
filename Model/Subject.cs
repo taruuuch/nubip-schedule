@@ -1,4 +1,4 @@
-﻿using System;
+﻿using Newtonsoft.Json;
 
 namespace Model
 {
@@ -8,6 +8,7 @@ namespace Model
         public string Title { get; set; }
         public int SubjectTypeId { get; set; }
 
+        [JsonIgnore]
         public SubjectType SubjectType { get; set; }
     }
 }

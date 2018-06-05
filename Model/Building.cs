@@ -1,5 +1,5 @@
-using System;
 using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace Model
 {
@@ -10,7 +10,9 @@ namespace Model
         public string Latitude { get; set; }
         public string Longitude { get; set; }
 
+        [JsonIgnore]
         public ICollection<Auditorium> Auditoriums { get; set; }
+        [JsonIgnore]
         public ICollection<Faculty> Faculties { get; set; }
     }
 }

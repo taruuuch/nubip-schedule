@@ -1,5 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace Model
 {
@@ -11,7 +11,9 @@ namespace Model
         public int SeatseCount { get; set; }
         public int AuditoriumTypeId { get; set; }
 
+        [JsonIgnore]
         public AuditoriumType AuditoriumType { get; set; }
+        [JsonIgnore]
         public ICollection<Lesson> Lessons { get; set; }
     }
 }

@@ -18,10 +18,14 @@ body {
 	margin: auto;
 }
 
-a {}
+a {
+    text-decoration: none;
+    color: black;
+}
 
 a:hover,
 a:focus {
+    color: #2196f3;
     transition: ease-in .2s;
 }
 
@@ -89,4 +93,15 @@ input:focus {
 	color: white;
 	font-weight: 500;
 	text-decoration: none;
+}
+
+.block {
+    background-color: white;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
+    border-radius: 5px;
+    padding: 15px;
+}
+
+.block-container {
+    padding: 70px 0 15px;
 }

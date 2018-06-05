@@ -9,7 +9,7 @@ import { Teacher } from "./containers/Teacher";
 import { Login } from "./containers/Login";
 
 export default class App extends Component {
-  displayName = App.name
+  displayName = App.name;
 
   render() {
     return (

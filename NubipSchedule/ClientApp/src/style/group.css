@@ -1,14 +1,6 @@
 .group-page {
-	padding-top: 55px;
 	display: flex;
 	flex-wrap: wrap;
-}
-
-.group-page > div {
-	padding: 15px;
-	box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
-	border-radius: 5px;
-	background-color: white;
 }
 
 .group-page > .group-title {
@@ -33,57 +25,61 @@
 	margin-left: 15px;
 }
 
-.header-of-schedule {
-	display: flex;
-	width: 100%;
-	background-color: #2196f3;
-	border-radius: 5px;
-	box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
-	padding: 15px;
-	margin: 0 0 15px 0;
-	color: white;
-	text-align: center;
+
+.group-schedule > table {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    border: none;
+    border-collapse: collapse;
+    border-spacing: 0;
 }
 
-.header-of-schedule > .day {
-	flex: 0 0 15%;
+.group-schedule > table > thead.header-of-schedule {
+    width: 100%;
+    background-color: #2196f3;
+    border-radius: 5px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
+    color: white;
+    text-align: center;
 }
 
-.header-of-schedule > .number {
-	flex: 0 1 15%;
+.group-schedule > table > thead.header-of-schedule > tr > th {
+    padding: 15px 10px;
 }
 
-.header-of-schedule > .first-group {
-	flex: 0 2 30%;
+.group-schedule > table .day {
+    text-align: center;
 }
 
-.header-of-schedule > .second-group {
-	flex: 0 3 30%;
+.group-schedule > table .lesson-number {
+    text-align: center;
+    font-weight: 600;
 }
 
-.schedule-day {
-	display: flex;
-	padding: 0 15px;
+.group-schedule > table > tbody > tr > td {
+    padding: 15px;
 }
 
-.schedule-day > .day {
-	flex: 0 0 15%;
-	text-align: center;
-	align-self: center;
+.group-schedule > table > tbody > tr:last-child {
+    border: none;
 }
 
-.schedule-day > .schedule-content {
-	flex: 0 1 85%;
+.group-schedule > table > tbody > tr .lesson-title {
+    font-weight: 700;
+    word-wrap: break-word;
 }
 
-.schedule-day > .schedule-content > ul {
-	display: flex;
-	flex-wrap: wrap;
-	list-style: none;
+.group-schedule > table > tbody .lesson-teacher {
+    font-weight: 300;
+    font-style: italic;
 }
 
-.schedule-day > .schedule-content > ul > li {
-	flex: 1 100%;
-	text-align: center;
-	align-self: center;
+.group-schedule > table > tbody .lesson-location {
+    font-weight: 300;
+}
+
+.group-schedule > table > tbody .lesson-active {
+    background-color: #bbdefb;
+    border-left: 3px solid #2196f3;
 }

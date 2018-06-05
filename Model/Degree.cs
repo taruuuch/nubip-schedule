@@ -1,5 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace Model
 {
@@ -8,6 +8,7 @@ namespace Model
         public int DegreeId { get; set; }
         public string Title { get; set; }
 
+        [JsonIgnore]
         public ICollection<Teacher> Teachers { get; set; }
     }
 }

@@ -1,5 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace Model
 {
@@ -9,6 +9,7 @@ namespace Model
         public string Title { get; set; }
         public bool Computer { get; set; }
 
+        [JsonIgnore]
         public ICollection<Auditorium> Auditoriums { get; set; }
     }
 }

@@ -68,10 +68,10 @@ export class SearchForm extends Component {
 	}
 
     specialityOptionClick() {
-	    /*document.getElementById("groupSelect").disabled = false;
-        fetch('/api/speciality/' + this.state.value)
+	    // document.getElementById("groupSelect").disabled = false;
+        fetch('/api/speciality/1')
             .then(res => res.json())
-            .then(groups=>this.setState({groups}));*/
+            .then(groups=>this.setState({groups}));
     }
 
     handleSubmit(e) {
@@ -94,8 +94,8 @@ export class SearchForm extends Component {
 			<main className="container main-page">
 				<div className="form-container">
 					<ul className="form-tab-buttons">
-						<li><a href="#group-form" className="form-active">Група</a></li>
-						<li><a href="#teacher-form">Викладач</a></li>
+						<li><a href="" className="form-active">Група</a></li>
+						<li><a href="">Викладач</a></li>
 					</ul>
 					<form action="" className="form-custom-style" id="group-form" onSubmit={this.handleSubmit}>
 						<div className="form-inputs">
@@ -134,7 +134,7 @@ export class SearchForm extends Component {
                                     onChange={this.specialityOptionClick}
                                     options={this.state.options}
                                 />*/}
-								{/*<select onClick={this.specialityOptionClick} value={this.value}>
+								<select onClick={this.specialityOptionClick} value={this.value}>
                                     {this.state.specialitys.map(item => 
                                         <option 
                                             id={item.specialityId} 
@@ -143,7 +143,7 @@ export class SearchForm extends Component {
                                         </option>
                                     )}
 								</select>
-								<select id="groupSelect" value={this.value} disabled>
+								<select id="groupSelect" value={this.value}>
                                     {this.state.groups.map(item =>
                                         <option
                                             id={item.groupId}
@@ -151,7 +151,7 @@ export class SearchForm extends Component {
                                             {item.title}
                                         </option>
                                     )}
-								</select>*/}
+								</select>
 							</div>
 							<div className="form-buttons">
 								<div className="btn-flex">

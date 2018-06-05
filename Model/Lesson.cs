@@ -1,4 +1,4 @@
-﻿using System;
+﻿using Newtonsoft.Json;
 
 namespace Model
 {
@@ -14,10 +14,15 @@ namespace Model
         public int Week { get; set; }
         public int SubGroup { get; set; }
 
+        [JsonIgnore]
         public Curriculum Curriculum { get; set; }
+        [JsonIgnore]
         public Group Group { get; set; }
+        [JsonIgnore]
         public Teacher Teacher { get; set; }
+        [JsonIgnore]
         public Auditorium Auditorium { get; set; }
+        [JsonIgnore]
         public Time Time { get; set; }
     }
 }

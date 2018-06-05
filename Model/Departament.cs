@@ -1,5 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace Model
 {
@@ -11,7 +11,9 @@ namespace Model
         public int FacultyId { get; set; }
         public string Email { get; set; }
 
+        [JsonIgnore]
         public ICollection<Teacher> Teachers { get; set; }
+        [JsonIgnore]
         public ICollection<Curriculum> Curriculums { get; set; }
     }
 }

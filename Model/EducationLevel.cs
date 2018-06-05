@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace Model
 {
@@ -7,6 +8,7 @@ namespace Model
         public int EducationLevelId { get; set; }
         public string Title { get; set; }
 
+        [JsonIgnore]
         public ICollection<Group> Groups { get; set; }
     }
 }
