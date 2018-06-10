@@ -5,6 +5,7 @@ using System.Linq;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.Internal;
 
 namespace NubipSchedule.Controllers
 {
@@ -19,9 +20,22 @@ namespace NubipSchedule.Controllers
         }
         
         [HttpGet("{id}")]
-        public IEnumerable<Lesson> GetLesson(int id)
+        public JsonResult GetGroupInfo(int id)
         {
-            return db.Lessons.Where(x=>x.GroupId == id);
+            var jsonLessons =
+                db.Groups.Where(g => g.GroupId == id)
+                    .Select(g => new
+                    {
+                        Id = g.GroupId,
+                        Title = g.Title,
+                        Speciality = g.Speciality.Title,
+                        Teacher = g.Teacher.LastName,
+                        Students = g.StudentCount,
+                        EducationLevel = g.EducationLevel.Title,
+                        EducationForm = g.EducationForm.Title
+                    })
+                    .ToList();
+            return new JsonResult(jsonLessons.AsEnumerable());
         }
     }
 }

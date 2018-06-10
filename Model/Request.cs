@@ -13,9 +13,7 @@ namespace Model
         public DateTime RequestTime { get; set; }
         public bool Status { get; set; }
 
-        [JsonIgnore]
         public Lesson Lesson { get; set; }
-        [JsonIgnore]
         public Time Time { get; set; }
     }
 }

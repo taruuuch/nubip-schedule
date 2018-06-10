@@ -134,24 +134,24 @@ export class SearchForm extends Component {
                                     onChange={this.specialityOptionClick}
                                     options={this.state.options}
                                 />*/}
-								<select onClick={this.specialityOptionClick} value={this.value}>
-                                    {this.state.specialitys.map(item => 
-                                        <option 
-                                            id={item.specialityId} 
-                                            key={item.specialityId}>
-                                            {item.title}
-                                        </option>
-                                    )}
-								</select>
-								<select id="groupSelect" value={this.value}>
-                                    {this.state.groups.map(item =>
-                                        <option
-                                            id={item.groupId}
-                                            key={item.groupId}>
-                                            {item.title}
-                                        </option>
-                                    )}
-								</select>
+								{/*<select onClick={this.specialityOptionClick} value={this.value}>*/}
+                                    {/*{this.state.specialitys.map(item => */}
+                                        {/*<option */}
+                                            {/*id={item.specialityId} */}
+                                            {/*key={item.specialityId}>*/}
+                                            {/*{item.title}*/}
+                                        {/*</option>*/}
+                                    {/*)}*/}
+								{/*</select>*/}
+								{/*<select id="groupSelect" value={this.value}>*/}
+                                    {/*{this.state.groups.map(item =>*/}
+                                        {/*<option*/}
+                                            {/*id={item.groupId}*/}
+                                            {/*key={item.groupId}>*/}
+                                            {/*{item.title}*/}
+                                        {/*</option>*/}
+                                    {/*)}*/}
+								{/*</select>*/}
 							</div>
 							<div className="form-buttons">
 								<div className="btn-flex">

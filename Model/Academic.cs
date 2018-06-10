@@ -8,7 +8,6 @@ namespace Model
         public int AcademicId { get; set; }
         public string Title { get; set; }
         
-        [JsonIgnore]
         public ICollection<Teacher> Teachers { get; set; }
     }
 }

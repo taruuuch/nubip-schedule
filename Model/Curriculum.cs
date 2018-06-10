@@ -12,13 +12,10 @@ namespace Model
         public int LabaratorCount { get; set; }
         public int Semester { get; set; }
 
-        [JsonIgnore]
         public Speciality Speciality { get; set; }
-        [JsonIgnore]
         public Departament Departament { get; set; }
-        [JsonIgnore]
         public Subject Subject { get; set; }
-        [JsonIgnore]
+        
         public ICollection<Lesson> Lessons { get; set; }
     }
 }

@@ -8,7 +8,6 @@ namespace Model
         public string Title { get; set; }
         public int SubjectTypeId { get; set; }
 
-        [JsonIgnore]
         public SubjectType SubjectType { get; set; }
     }
 }

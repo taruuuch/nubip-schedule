@@ -5,31 +5,52 @@ import {Link} from "react-router-dom";
 export class Group extends Component {
 	displayName = Group.name;
 	
+	constructor() {
+	    super();
+	    
+	    this.state = {
+	        lessons: [],
+            groupInfo: [],
+        };
+    }
+    
+    componentWillMount() {
+        fetch('/api/lesson/4')
+            .then(res => res.json())
+            .then(lessons=>this.setState({lessons}));
+
+        fetch('/api/group/4')
+            .then(res => res.json())
+            .then(groupInfo=>this.setState({groupInfo}));
+    }
+	
 	render() {
 		return(
 			<main className="container group-page block-container">
-				<div className="block group-title">Розклад групи "ПІ-1506"</div>
+				<div className="block group-title">Розклад групи "{groupInfo.groupTitle}"</div>
 				<div className="block group-info">
-					<p>
-						<span className="info-title">Факультет: </span>
-						<span className="info-description">Інформаційних технологій</span>
-					</p>
-                    <p>
-                        <span className="info-title">Спеціальність: </span>
-                        <span className="info-description">Програмна інженерія</span>
-                    </p>
-                    <p>
-                        <span className="info-title">Освітній рівень: </span>
-                        <span className="info-description">Бакалавр</span>
-                    </p>
-                    <p>
-                        <span className="info-title">Форма навчання: </span>
-                        <span className="info-description">Денна</span>
-                    </p>
-                    <p>
-                        <span className="info-title">Кількість студентів: </span>
-                        <span className="info-description">17</span>
-                    </p>
+                    {/*{this.state.groupInfo.map(item => */}
+                        {/*<p>*/}
+                            {/*<span className="info-title">Факультет: </span>*/}
+                            {/*<span className="info-description">{item.groupTitle}</span>*/}
+                        {/*</p>*/}
+                        {/*<p>*/}
+                            {/*<span className="info-title">Спеціальність: </span>*/}
+                            {/*<span className="info-description">{item.groupSpeciality}</span>*/}
+                        {/*</p>*/}
+                        {/*<p>*/}
+                            {/*<span className="info-title">Освітній рівень: </span>*/}
+                            {/*<span className="info-description">{item.groupEducationLevel}</span>*/}
+                        {/*</p>*/}
+                        {/*<p>*/}
+                            {/*<span className="info-title">Форма навчання: </span>*/}
+                            {/*<span className="info-description">{item.groupEducationForm}</span>*/}
+                        {/*</p>*/}
+                        {/*<p>*/}
+                            {/*<span className="info-title">Кількість студентів: </span>*/}
+                            {/*<span className="info-description">{item.groupStudents}</span>*/}
+                        {/*</p>*/}
+                    {/*)}*/}
 				</div>
 				<div className="block group-schedule">
                     <table>
@@ -42,184 +63,203 @@ export class Group extends Component {
                             </tr>
                         </thead>
                         <tbody>
-                            {/*Понеділок*/}
-                            <tr>
-                                <td rowSpan="2" className="day">Понеділок</td>
-                                <td className="lesson-number">4</td>
-                                <td colSpan="2" className="lesson-active">
-                                    <p className="lesson-title">Методи об'єктно-орієнтованого проектування програмних систем</p>
-                                    <p className="lesson-teacher">
-                                        <Link to="/teacher">доцент Голуб Б. Л.</Link>
-                                    </p>
-                                    <p className="lesson-location">
-                                        <Link to="https://www.google.com/maps/@50.3813495,30.4955044,18.5z" target="_blank">
-                                            15 н.к., ауд. 213, лекція/лабораторна
-                                        </Link>
-                                    </p>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td className="lesson-number">5</td>
-                                <td colSpan="2">
-                                    <p className="lesson-title">Моделювювання програмного забезпечення</p>
-                                    <p className="lesson-teacher">
-                                        <Link to="/teacher">доцент Голуб Б. Л.</Link>
-                                    </p>
-                                    <p className="lesson-location">
-                                        <Link to="https://www.google.com/maps/@50.3813495,30.4955044,18.5z" target="_blank">
-                                            15 н.к., ауд. 214, лекція
-                                        </Link>
-                                    </p>
-                                </td>
-                            </tr>
-                            {/*Вівторок*/}
-                            <tr>
-                                <td rowSpan="2" className="day">Вівторок</td>
-                                <td className="lesson-number">1</td>
-                                <td colSpan="2">
-                                    <p className="lesson-title">Професійна практика</p>
-                                    <p className="lesson-teacher">
-                                        <Link to="/teacher">доцент Голуб Б. Л.</Link>
-                                    </p>
-                                    <p className="lesson-location">
-                                        <Link to="https://www.google.com/maps/@50.3813495,30.4955044,18.5z" target="_blank">
-                                            15 н.к., ауд. 213, лабораторна
-                                        </Link>
-                                    </p>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td className="lesson-number">2</td>
-                                <td colSpan="2">
-                                    <p className="lesson-title">Професійна практика</p>
-                                    <p className="lesson-teacher">
-                                        <Link to="/teacher">доцент Голуб Б. Л.</Link>
-                                    </p>
-                                    <p className="lesson-location">
-                                        <Link to="https://www.google.com/maps/@50.3813495,30.4955044,18.5z" target="_blank">
-                                            15 н.к., ауд. 214, лекція
-                                        </Link>
-                                    </p>
-                                </td>
-                            </tr>
-                            {/*Середа*/}
-                            <tr>
-                                <td rowSpan="4" className="day">Середа</td>
-                                <td className="lesson-number">1</td>
-                                <td colSpan="2">
-                                    <p className="lesson-title">Емпіричні методи</p>
-                                    <p className="lesson-teacher">
-                                        <Link to="/teacher">доцент Голуб Б. Л.</Link>
-                                    </p>
-                                    <p className="lesson-location">
-                                        <Link to="https://www.google.com/maps/@50.3813495,30.4955044,18.5z" target="_blank">
-                                            15 н.к., ауд. 224, лабораторна
-                                        </Link>
-                                    </p>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td className="lesson-number">2</td>
-                                <td colSpan="2">
-                                    <p className="lesson-title">Емпіричні методи</p>
-                                    <p className="lesson-teacher">
-                                        <Link to="/teacher">доцент Голуб Б. Л.</Link>
-                                    </p>
-                                    <p className="lesson-location">
-                                        <Link to="https://www.google.com/maps/@50.3813495,30.4955044,18.5z" target="_blank">
-                                            15 н.к., ауд. 230, лекція
-                                        </Link>
-                                    </p>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td className="lesson-number">3</td>
-                                <td colSpan="2">
-                                    <p className="lesson-title">Архітектура та проектування ПЗ</p>
-                                    <p className="lesson-teacher">
-                                        <Link to="/teacher">доцент Голуб Б. Л.</Link>
-                                    </p>
-                                    <p className="lesson-location">
-                                        <Link to="https://www.google.com/maps/@50.3813495,30.4955044,18.5z" target="_blank">
-                                            15 н.к., ауд. 206, лабораторна
-                                        </Link>
-                                    </p>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td className="lesson-number">4</td>
-                                <td colSpan="2">
-                                    <p className="lesson-title">Архітектура та проектування ПЗ</p>
-                                    <p className="lesson-teacher">
-                                        <Link to="/teacher">доцент Голуб Б. Л.</Link>
-                                    </p>
-                                    <p className="lesson-location">
-                                        <Link to="https://www.google.com/maps/@50.3813495,30.4955044,18.5z" target="_blank">
-                                            11 н.к., ауд. 355, лекція
-                                        </Link>
-                                    </p>
-                                </td>
-                            </tr>
-                            {/*Четверг*/}
-                            <tr>
-                                <td rowSpan="2" className="day">Четверг</td>
-                                <td className="lesson-number">4</td>
-                                <td colSpan="2">
-                                    <p className="lesson-title">Технології розподіленого програмування</p>
-                                    <p className="lesson-teacher">
-                                        <Link to="/teacher">доцент Голуб Б. Л.</Link>
-                                    </p>
-                                    <p className="lesson-location">
-                                        <Link to="https://www.google.com/maps/@50.3813495,30.4955044,18.5z" target="_blank">
-                                            15 н.к., ауд. 213, лекція/лабораторна
-                                        </Link>
-                                    </p>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td className="lesson-number">5</td>
-                                <td colSpan="2">
-                                    <p className="lesson-title">Проектний практикум</p>
-                                    <p className="lesson-teacher">
-                                        <Link to="/teacher">доцент Голуб Б. Л.</Link>
-                                    </p>
-                                    <p className="lesson-location">
-                                        <Link to="https://www.google.com/maps/@50.3813495,30.4955044,18.5z" target="_blank">
-                                            15 н.к., ауд. 213, лекція/лабораторна
-                                        </Link>
-                                    </p>
-                                </td>
-                            </tr>
-                            {/*Пятниця*/}
-                            <tr>
-                                <td rowSpan="2" className="day">Пятниця</td>
-                                <td className="lesson-number">1</td>
-                                <td colSpan="2">
-                                    <p className="lesson-title">Економіка програмного забезпечення</p>
-                                    <p className="lesson-teacher">
-                                        <Link to="/teacher">доцент Голуб Б. Л.</Link>
-                                    </p>
-                                    <p className="lesson-location">
-                                        <Link to="https://www.google.com/maps/@50.3813495,30.4955044,18.5z" target="_blank">
-                                            15 н.к., ауд. 206, лабораторна
-                                        </Link>
-                                    </p>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td className="lesson-number">2</td>
-                                <td colSpan="2">
-                                    <p className="lesson-title">Економіка програмного забезпечення</p>
-                                    <p className="lesson-teacher">
-                                        <Link to="/teacher">доцент Голуб Б. Л.</Link>
-                                    </p>
-                                    <p className="lesson-location">
-                                        <Link to="https://www.google.com/maps/@50.3813495,30.4955044,18.5z" target="_blank">
-                                            10 н.к., ауд. 513, лекція
-                                        </Link>
-                                    </p>
-                                </td>
-                            </tr>
+
+                            {this.state.lessons.map(item =>
+                                <tr>
+                                    {/*<td rowSpan="2" className="day">Понеділок</td>*/}
+                                    <td className="lesson-number">{item.subjectNumber}</td>
+                                    <td colSpan="2">
+                                        <p className="lesson-title">{item.subjectTitle}</p>
+                                        <p className="lesson-teacher">
+                                            <Link to="/teacher">{item.teacherAcademic} {item.teacherLastname} {item.teacherName} {item.teacherMiddlename}</Link>
+                                        </p>
+                                        <p className="lesson-location">
+                                            <Link to="https://www.google.com/maps/" target="_blank">
+                                                {item.building} н.к., ауд. {item.auditorium}, {item.subjectType}
+                                            </Link>
+                                        </p>
+                                    </td>
+                                </tr>
+                            )}
+                        
+                            {/*/!*Понеділок*!/*/}
+                            {/*<tr>*/}
+                                {/*<td rowSpan="2" className="day">Понеділок</td>*/}
+                                {/*<td className="lesson-number">4</td>*/}
+                                {/*<td colSpan="2" className="lesson-active">*/}
+                                    {/*<p className="lesson-title">Методи об'єктно-орієнтованого проектування програмних систем</p>*/}
+                                    {/*<p className="lesson-teacher">*/}
+                                        {/*<Link to="/teacher">доцент Голуб Б. Л.</Link>*/}
+                                    {/*</p>*/}
+                                    {/*<p className="lesson-location">*/}
+                                        {/*<Link to="https://www.google.com/maps/@50.3813495,30.4955044,18.5z" target="_blank">*/}
+                                            {/*15 н.к., ауд. 213, лекція/лабораторна*/}
+                                        {/*</Link>*/}
+                                    {/*</p>*/}
+                                {/*</td>*/}
+                            {/*</tr>*/}
+                            {/*<tr>*/}
+                                {/*<td className="lesson-number">5</td>*/}
+                                {/*<td colSpan="2">*/}
+                                    {/*<p className="lesson-title">Моделювювання програмного забезпечення</p>*/}
+                                    {/*<p className="lesson-teacher">*/}
+                                        {/*<Link to="/teacher">доцент Голуб Б. Л.</Link>*/}
+                                    {/*</p>*/}
+                                    {/*<p className="lesson-location">*/}
+                                        {/*<Link to="https://www.google.com/maps/@50.3813495,30.4955044,18.5z" target="_blank">*/}
+                                            {/*15 н.к., ауд. 214, лекція*/}
+                                        {/*</Link>*/}
+                                    {/*</p>*/}
+                                {/*</td>*/}
+                            {/*</tr>*/}
+                            {/*/!*Вівторок*!/*/}
+                            {/*<tr>*/}
+                                {/*<td rowSpan="2" className="day">Вівторок</td>*/}
+                                {/*<td className="lesson-number">1</td>*/}
+                                {/*<td colSpan="2">*/}
+                                    {/*<p className="lesson-title">Професійна практика</p>*/}
+                                    {/*<p className="lesson-teacher">*/}
+                                        {/*<Link to="/teacher">доцент Голуб Б. Л.</Link>*/}
+                                    {/*</p>*/}
+                                    {/*<p className="lesson-location">*/}
+                                        {/*<Link to="https://www.google.com/maps/@50.3813495,30.4955044,18.5z" target="_blank">*/}
+                                            {/*15 н.к., ауд. 213, лабораторна*/}
+                                        {/*</Link>*/}
+                                    {/*</p>*/}
+                                {/*</td>*/}
+                            {/*</tr>*/}
+                            {/*<tr>*/}
+                                {/*<td className="lesson-number">2</td>*/}
+                                {/*<td colSpan="2">*/}
+                                    {/*<p className="lesson-title">Професійна практика</p>*/}
+                                    {/*<p className="lesson-teacher">*/}
+                                        {/*<Link to="/teacher">доцент Голуб Б. Л.</Link>*/}
+                                    {/*</p>*/}
+                                    {/*<p className="lesson-location">*/}
+                                        {/*<Link to="https://www.google.com/maps/@50.3813495,30.4955044,18.5z" target="_blank">*/}
+                                            {/*15 н.к., ауд. 214, лекція*/}
+                                        {/*</Link>*/}
+                                    {/*</p>*/}
+                                {/*</td>*/}
+                            {/*</tr>*/}
+                            {/*/!*Середа*!/*/}
+                            {/*<tr>*/}
+                                {/*<td rowSpan="4" className="day">Середа</td>*/}
+                                {/*<td className="lesson-number">1</td>*/}
+                                {/*<td colSpan="2">*/}
+                                    {/*<p className="lesson-title">Емпіричні методи</p>*/}
+                                    {/*<p className="lesson-teacher">*/}
+                                        {/*<Link to="/teacher">доцент Голуб Б. Л.</Link>*/}
+                                    {/*</p>*/}
+                                    {/*<p className="lesson-location">*/}
+                                        {/*<Link to="https://www.google.com/maps/@50.3813495,30.4955044,18.5z" target="_blank">*/}
+                                            {/*15 н.к., ауд. 224, лабораторна*/}
+                                        {/*</Link>*/}
+                                    {/*</p>*/}
+                                {/*</td>*/}
+                            {/*</tr>*/}
+                            {/*<tr>*/}
+                                {/*<td className="lesson-number">2</td>*/}
+                                {/*<td colSpan="2">*/}
+                                    {/*<p className="lesson-title">Емпіричні методи</p>*/}
+                                    {/*<p className="lesson-teacher">*/}
+                                        {/*<Link to="/teacher">доцент Голуб Б. Л.</Link>*/}
+                                    {/*</p>*/}
+                                    {/*<p className="lesson-location">*/}
+                                        {/*<Link to="https://www.google.com/maps/@50.3813495,30.4955044,18.5z" target="_blank">*/}
+                                            {/*15 н.к., ауд. 230, лекція*/}
+                                        {/*</Link>*/}
+                                    {/*</p>*/}
+                                {/*</td>*/}
+                            {/*</tr>*/}
+                            {/*<tr>*/}
+                                {/*<td className="lesson-number">3</td>*/}
+                                {/*<td colSpan="2">*/}
+                                    {/*<p className="lesson-title">Архітектура та проектування ПЗ</p>*/}
+                                    {/*<p className="lesson-teacher">*/}
+                                        {/*<Link to="/teacher">доцент Голуб Б. Л.</Link>*/}
+                                    {/*</p>*/}
+                                    {/*<p className="lesson-location">*/}
+                                        {/*<Link to="https://www.google.com/maps/@50.3813495,30.4955044,18.5z" target="_blank">*/}
+                                            {/*15 н.к., ауд. 206, лабораторна*/}
+                                        {/*</Link>*/}
+                                    {/*</p>*/}
+                                {/*</td>*/}
+                            {/*</tr>*/}
+                            {/*<tr>*/}
+                                {/*<td className="lesson-number">4</td>*/}
+                                {/*<td colSpan="2">*/}
+                                    {/*<p className="lesson-title">Архітектура та проектування ПЗ</p>*/}
+                                    {/*<p className="lesson-teacher">*/}
+                                        {/*<Link to="/teacher">доцент Голуб Б. Л.</Link>*/}
+                                    {/*</p>*/}
+                                    {/*<p className="lesson-location">*/}
+                                        {/*<Link to="https://www.google.com/maps/@50.3813495,30.4955044,18.5z" target="_blank">*/}
+                                            {/*11 н.к., ауд. 355, лекція*/}
+                                        {/*</Link>*/}
+                                    {/*</p>*/}
+                                {/*</td>*/}
+                            {/*</tr>*/}
+                            {/*/!*Четверг*!/*/}
+                            {/*<tr>*/}
+                                {/*<td rowSpan="2" className="day">Четверг</td>*/}
+                                {/*<td className="lesson-number">4</td>*/}
+                                {/*<td colSpan="2">*/}
+                                    {/*<p className="lesson-title">Технології розподіленого програмування</p>*/}
+                                    {/*<p className="lesson-teacher">*/}
+                                        {/*<Link to="/teacher">доцент Голуб Б. Л.</Link>*/}
+                                    {/*</p>*/}
+                                    {/*<p className="lesson-location">*/}
+                                        {/*<Link to="https://www.google.com/maps/@50.3813495,30.4955044,18.5z" target="_blank">*/}
+                                            {/*15 н.к., ауд. 213, лекція/лабораторна*/}
+                                        {/*</Link>*/}
+                                    {/*</p>*/}
+                                {/*</td>*/}
+                            {/*</tr>*/}
+                            {/*<tr>*/}
+                                {/*<td className="lesson-number">5</td>*/}
+                                {/*<td colSpan="2">*/}
+                                    {/*<p className="lesson-title">Проектний практикум</p>*/}
+                                    {/*<p className="lesson-teacher">*/}
+                                        {/*<Link to="/teacher">доцент Голуб Б. Л.</Link>*/}
+                                    {/*</p>*/}
+                                    {/*<p className="lesson-location">*/}
+                                        {/*<Link to="https://www.google.com/maps/@50.3813495,30.4955044,18.5z" target="_blank">*/}
+                                            {/*15 н.к., ауд. 213, лекція/лабораторна*/}
+                                        {/*</Link>*/}
+                                    {/*</p>*/}
+                                {/*</td>*/}
+                            {/*</tr>*/}
+                            {/*/!*Пятниця*!/*/}
+                            {/*<tr>*/}
+                                {/*<td rowSpan="2" className="day">Пятниця</td>*/}
+                                {/*<td className="lesson-number">1</td>*/}
+                                {/*<td colSpan="2">*/}
+                                    {/*<p className="lesson-title">Економіка програмного забезпечення</p>*/}
+                                    {/*<p className="lesson-teacher">*/}
+                                        {/*<Link to="/teacher">доцент Голуб Б. Л.</Link>*/}
+                                    {/*</p>*/}
+                                    {/*<p className="lesson-location">*/}
+                                        {/*<Link to="https://www.google.com/maps/@50.3813495,30.4955044,18.5z" target="_blank">*/}
+                                            {/*15 н.к., ауд. 206, лабораторна*/}
+                                        {/*</Link>*/}
+                                    {/*</p>*/}
+                                {/*</td>*/}
+                            {/*</tr>*/}
+                            {/*<tr>*/}
+                                {/*<td className="lesson-number">2</td>*/}
+                                {/*<td colSpan="2">*/}
+                                    {/*<p className="lesson-title">Економіка програмного забезпечення</p>*/}
+                                    {/*<p className="lesson-teacher">*/}
+                                        {/*<Link to="/teacher">доцент Голуб Б. Л.</Link>*/}
+                                    {/*</p>*/}
+                                    {/*<p className="lesson-location">*/}
+                                        {/*<Link to="https://www.google.com/maps/@50.3813495,30.4955044,18.5z" target="_blank">*/}
+                                            {/*10 н.к., ауд. 513, лекція*/}
+                                        {/*</Link>*/}
+                                    {/*</p>*/}
+                                {/*</td>*/}
+                            {/*</tr>*/}
                         </tbody>
                     </table>
 				</div>

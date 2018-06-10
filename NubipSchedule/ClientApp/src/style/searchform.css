@@ -98,11 +98,11 @@
 	border-bottom: 1px solid #bdbdbd;
 }
 
-.form-buttons > select > option {
+.form-inputs > select > option {
 	border: none;
 }
 
-.form-buttons > select > option:last-child {
+.form-inputs > select > option:last-child {
 	border-radius: 0 0 5px 5px;
 }
 

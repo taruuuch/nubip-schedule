@@ -15,9 +15,8 @@ namespace Model
         public string Email { get; set; }
         public string Site { get; set; }
 
-        [JsonIgnore]
         public Building Building { get; set; }
-        [JsonIgnore]
+        
         public ICollection<Speciality> Specialities { get; set; }
     }
 }

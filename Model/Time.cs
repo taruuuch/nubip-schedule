@@ -10,10 +10,8 @@ namespace Model
         public int Number { get; set; }
         public TimeSpan Start { get; set; }
         public TimeSpan End { get; set; }
-
-        [JsonIgnore]
+        
         public ICollection<Lesson> Lessons { get; set; }
-        [JsonIgnore]
         public ICollection<Request> Requests { get; set; }
     }
 }

@@ -14,7 +14,7 @@ export class LoginForm extends Component {
                       <div className="form-buttons">
                           <div className="btn-flex"></div>
                           <div className="btn-flex">
-                            <button className="btn btn-flex">Увійти</button>
+                              <button className="btn btn-flex">Увійти</button>
                           </div>
                       </div>
                   </form>

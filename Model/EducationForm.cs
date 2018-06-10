@@ -7,8 +7,7 @@ namespace Model
     {
         public int EducationFormId { get; set; }
         public string Title { get; set; }
-
-        [JsonIgnore]
+        
         public ICollection<Group> Groups { get; set; }
     }
 }

@@ -11,9 +11,9 @@ namespace Model
         public int SeatseCount { get; set; }
         public int AuditoriumTypeId { get; set; }
 
-        [JsonIgnore]
         public AuditoriumType AuditoriumType { get; set; }
-        [JsonIgnore]
+        public Building Building { get; set; }
+        
         public ICollection<Lesson> Lessons { get; set; }
     }
 }

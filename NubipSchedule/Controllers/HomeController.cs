@@ -19,15 +19,31 @@ namespace NubipSchedule.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<Speciality> Get()
+        public JsonResult GetSpecialityList()
         {
-            return db.Specialitys.ToList();
+            var jsonLessons = 
+                db.Specialitys
+                    .Select(s => new
+                    {
+                        Id = s.SpecialityId,
+                        Title = s.Title
+                    })
+                    .ToList();
+            return new JsonResult(jsonLessons.AsEnumerable());
         }
 
         [HttpGet("{id}")]
-        public IEnumerable<Group> GetGroup(int id)
+        public JsonResult GetGroupList(int id)
         {
-            return db.Groups.Where(x=>x.SpecialityId == id);
+            var jsonLessons = 
+                db.Groups.Where(g => g.SpecialityId == id)
+                    .Select(g => new
+                    {
+                        Id = g.GroupId,
+                        Title = g.Title
+                    })
+                .ToList();
+            return new JsonResult(jsonLessons.AsEnumerable());
         }
     }
 }

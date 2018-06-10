@@ -15,11 +15,8 @@ namespace Model
         public int DegreeId { get; set; }
         public int AcademicId { get; set; }
 
-        [JsonIgnore]
         public Departament Departament { get; set; }
-        [JsonIgnore]
         public Degree Degree { get; set; }
-        [JsonIgnore]
         public Academic Academic { get; set; }
     }
 }
