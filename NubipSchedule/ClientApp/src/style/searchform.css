@@ -8,54 +8,40 @@
 	flex: 1;
 }
 
-.form-tab-buttons {
-	list-style: none;
+.react-tabs__tab-list {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
 }
 
-.form-tab-buttons > li {
-	display: inline-flex;
-	width: 50%;
-	float: left;
-	text-align: center;
+.react-tabs .react-tabs__tab {
+	flex: 1 50%;
+    background-color: #2196f3;
+    padding: 15px 0;
+    color: white;
+    text-align: center;
 }
 
-.form-tab-buttons > li > a {
-	width: 100%;
-	height: 100%;
-	background-color: #2196f3;
-	padding: 15px 0;
-	text-decoration: none;
-	color: white;
+.react-tabs .react-tabs__tab:first-child {
+    border-radius: 5px 0 0 0;
 }
 
-.form-tab-buttons > li > a:hover {
-	background-color: #bbdefb;
-	cursor: pointer;
+.react-tabs .react-tabs__tab:last-child {
+    border-radius: 0 5px 0 0;
 }
 
-.form-tab-buttons > li:first-child > a {
-	border-radius: 5px 0 0 0;
+.react-tabs .react-tabs__tab:hover {
+    background-color: #bbdefb;
+    cursor: pointer;
 }
 
-.form-tab-buttons > li:last-child > a {
-	border-radius: 0 5px 0 0;
+.react-tabs .react-tabs__tab--selected {
+    background-color: #bbdefb;
 }
 
 .form-custom-style {
 	padding: 15px;
-}
-
-.form-tab-buttons > li > .form-active {
-	background-color: #bbdefb;
-}
-
-.form-tab-buttons > li > .disabled {
-	background-color: #bdbdbd;
-}
-
-.form-tab-buttons > li > .disabled:hover {
-	background-color: #bdbdbd;
-	cursor: default;
 }
 
 .form-title > h2 {

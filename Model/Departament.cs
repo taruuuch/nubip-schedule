@@ -10,7 +10,9 @@ namespace Model
         public string Dean { get; set; }
         public int FacultyId { get; set; }
         public string Email { get; set; }
-        
+
+        public Faculty Faculty { get; set; }
+
         public ICollection<Teacher> Teachers { get; set; }
         public ICollection<Curriculum> Curriculums { get; set; }
     }

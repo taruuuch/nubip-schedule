@@ -1,58 +1,117 @@
 ﻿import '../style/group.css';
 import React, { Component } from 'react';
-import {Link} from "react-router-dom";
+import { Link } from 'react-router-dom';
+
+const renderLesson = (lessonOfDay) => {
+    let data = lessonOfDay.map( (data, index) => {
+        return (
+            <tr>
+                <td rowSpan="1" className="day">
+                    {(() => {
+                        switch (data.weekDay) {
+                            case "1":   return "Понеділок";
+                            case "2":   return "Вівторок";
+                            case "3":   return "Середа";
+                            case "4":   return "Четверг";
+                            case "5":   return "П'ятниця";
+                            default:    return "Понеділок";
+                        }
+                    })()}
+                </td>
+                <td className="lesson-number">
+                    {data.subjectNumber}
+                </td>
+                <td colSpan="2">
+                    <p className="lesson-title">
+                        {data.subjectTitle}
+                    </p>
+                    <p className="lesson-teacher">
+                        <Link to={"/teacher/" + data.teacherId}>
+                            {data.teacherAcademic} {data.teacherLastname} {data.teacherName} {data.teacherMiddlename}
+                        </Link>
+                    </p>
+                    <p className="lesson-location">
+                        <a href={"https://www.google.com/maps/@" + data.buildingLat + "," + data.buildingLong + ",18z"} target="_blank">
+                            {data.building} н.к., ауд. {data.auditorium}, {data.subjectType}
+                        </a>
+                    </p>
+                </td>
+            </tr>
+        );
+    });
+
+    return(
+        data
+    );
+};
+
+const renderGroupInfo = (group) => {
+    let data = group.map( (data, index) => {
+        return (
+            <div className="block group-info">
+                <p>
+                    <span className="info-title">Група: </span>
+                    <span className="info-description">{data.title}</span>
+                </p>
+                <p>
+                    <span className="info-title">Факультет: </span>
+                    <span className="info-description">{data.faculty}</span>
+                </p>
+                
+                <p>
+                    <span className="info-title">Спеціальність: </span>
+                    <span className="info-description">{data.speciality}</span>
+                </p>
+        
+                <p>
+                    <span className="info-title">Освітній рівень: </span>
+                    <span className="info-description">{data.educationLevel}</span>
+                </p>
+        
+                <p>
+                    <span className="info-title">Форма навчання: </span>
+                    <span className="info-description">{data.educationForm}</span>
+                </p>
+        
+                <p>
+                    <span className="info-title">Кількість студентів: </span>
+                    <span className="info-description">{data.students}</span>
+                </p>
+            </div>
+        );
+    });
+
+    return(
+        data
+    );
+};
 
 export class Group extends Component {
-	displayName = Group.name;
-	
 	constructor() {
 	    super();
 	    
 	    this.state = {
-	        lessons: [],
+	        lesson: [],
             groupInfo: [],
         };
     }
     
     componentWillMount() {
-        fetch('/api/lesson/4')
-            .then(res => res.json())
-            .then(lessons=>this.setState({lessons}));
+        fetch('/api/lesson/' + parseInt(this.props.match.params.id, 10))
+            .then( result => result.json() )
+            .then( lesson => this.setState({lesson}) );
 
-        fetch('/api/group/4')
-            .then(res => res.json())
-            .then(groupInfo=>this.setState({groupInfo}));
+        fetch('/api/group/' + parseInt(this.props.match.params.id, 10))
+            .then( result => result.json() )
+            .then( groupInfo => this.setState({groupInfo}) );
     }
 	
 	render() {
-		return(
-			<main className="container group-page block-container">
-				<div className="block group-title">Розклад групи "{groupInfo.groupTitle}"</div>
-				<div className="block group-info">
-                    {/*{this.state.groupInfo.map(item => */}
-                        {/*<p>*/}
-                            {/*<span className="info-title">Факультет: </span>*/}
-                            {/*<span className="info-description">{item.groupTitle}</span>*/}
-                        {/*</p>*/}
-                        {/*<p>*/}
-                            {/*<span className="info-title">Спеціальність: </span>*/}
-                            {/*<span className="info-description">{item.groupSpeciality}</span>*/}
-                        {/*</p>*/}
-                        {/*<p>*/}
-                            {/*<span className="info-title">Освітній рівень: </span>*/}
-                            {/*<span className="info-description">{item.groupEducationLevel}</span>*/}
-                        {/*</p>*/}
-                        {/*<p>*/}
-                            {/*<span className="info-title">Форма навчання: </span>*/}
-                            {/*<span className="info-description">{item.groupEducationForm}</span>*/}
-                        {/*</p>*/}
-                        {/*<p>*/}
-                            {/*<span className="info-title">Кількість студентів: </span>*/}
-                            {/*<span className="info-description">{item.groupStudents}</span>*/}
-                        {/*</p>*/}
-                    {/*)}*/}
-				</div>
-				<div className="block group-schedule">
+        return(
+            <main className="container group-page block-container">
+                <div className="block group-title">Розклад групи</div>
+                {renderGroupInfo(this.state.groupInfo)}
+                <div className="block group-schedule">
                     <table>
                         <thead className="header-of-schedule">
                             <tr>
@@ -63,207 +122,11 @@ export class Group extends Component {
                             </tr>
                         </thead>
                         <tbody>
-
-                            {this.state.lessons.map(item =>
-                                <tr>
-                                    {/*<td rowSpan="2" className="day">Понеділок</td>*/}
-                                    <td className="lesson-number">{item.subjectNumber}</td>
-                                    <td colSpan="2">
-                                        <p className="lesson-title">{item.subjectTitle}</p>
-                                        <p className="lesson-teacher">
-                                            <Link to="/teacher">{item.teacherAcademic} {item.teacherLastname} {item.teacherName} {item.teacherMiddlename}</Link>
-                                        </p>
-                                        <p className="lesson-location">
-                                            <Link to="https://www.google.com/maps/" target="_blank">
-                                                {item.building} н.к., ауд. {item.auditorium}, {item.subjectType}
-                                            </Link>
-                                        </p>
-                                    </td>
-                                </tr>
-                            )}
-                        
-                            {/*/!*Понеділок*!/*/}
-                            {/*<tr>*/}
-                                {/*<td rowSpan="2" className="day">Понеділок</td>*/}
-                                {/*<td className="lesson-number">4</td>*/}
-                                {/*<td colSpan="2" className="lesson-active">*/}
-                                    {/*<p className="lesson-title">Методи об'єктно-орієнтованого проектування програмних систем</p>*/}
-                                    {/*<p className="lesson-teacher">*/}
-                                        {/*<Link to="/teacher">доцент Голуб Б. Л.</Link>*/}
-                                    {/*</p>*/}
-                                    {/*<p className="lesson-location">*/}
-                                        {/*<Link to="https://www.google.com/maps/@50.3813495,30.4955044,18.5z" target="_blank">*/}
-                                            {/*15 н.к., ауд. 213, лекція/лабораторна*/}
-                                        {/*</Link>*/}
-                                    {/*</p>*/}
-                                {/*</td>*/}
-                            {/*</tr>*/}
-                            {/*<tr>*/}
-                                {/*<td className="lesson-number">5</td>*/}
-                                {/*<td colSpan="2">*/}
-                                    {/*<p className="lesson-title">Моделювювання програмного забезпечення</p>*/}
-                                    {/*<p className="lesson-teacher">*/}
-                                        {/*<Link to="/teacher">доцент Голуб Б. Л.</Link>*/}
-                                    {/*</p>*/}
-                                    {/*<p className="lesson-location">*/}
-                                        {/*<Link to="https://www.google.com/maps/@50.3813495,30.4955044,18.5z" target="_blank">*/}
-                                            {/*15 н.к., ауд. 214, лекція*/}
-                                        {/*</Link>*/}
-                                    {/*</p>*/}
-                                {/*</td>*/}
-                            {/*</tr>*/}
-                            {/*/!*Вівторок*!/*/}
-                            {/*<tr>*/}
-                                {/*<td rowSpan="2" className="day">Вівторок</td>*/}
-                                {/*<td className="lesson-number">1</td>*/}
-                                {/*<td colSpan="2">*/}
-                                    {/*<p className="lesson-title">Професійна практика</p>*/}
-                                    {/*<p className="lesson-teacher">*/}
-                                        {/*<Link to="/teacher">доцент Голуб Б. Л.</Link>*/}
-                                    {/*</p>*/}
-                                    {/*<p className="lesson-location">*/}
-                                        {/*<Link to="https://www.google.com/maps/@50.3813495,30.4955044,18.5z" target="_blank">*/}
-                                            {/*15 н.к., ауд. 213, лабораторна*/}
-                                        {/*</Link>*/}
-                                    {/*</p>*/}
-                                {/*</td>*/}
-                            {/*</tr>*/}
-                            {/*<tr>*/}
-                                {/*<td className="lesson-number">2</td>*/}
-                                {/*<td colSpan="2">*/}
-                                    {/*<p className="lesson-title">Професійна практика</p>*/}
-                                    {/*<p className="lesson-teacher">*/}
-                                        {/*<Link to="/teacher">доцент Голуб Б. Л.</Link>*/}
-                                    {/*</p>*/}
-                                    {/*<p className="lesson-location">*/}
-                                        {/*<Link to="https://www.google.com/maps/@50.3813495,30.4955044,18.5z" target="_blank">*/}
-                                            {/*15 н.к., ауд. 214, лекція*/}
-                                        {/*</Link>*/}
-                                    {/*</p>*/}
-                                {/*</td>*/}
-                            {/*</tr>*/}
-                            {/*/!*Середа*!/*/}
-                            {/*<tr>*/}
-                                {/*<td rowSpan="4" className="day">Середа</td>*/}
-                                {/*<td className="lesson-number">1</td>*/}
-                                {/*<td colSpan="2">*/}
-                                    {/*<p className="lesson-title">Емпіричні методи</p>*/}
-                                    {/*<p className="lesson-teacher">*/}
-                                        {/*<Link to="/teacher">доцент Голуб Б. Л.</Link>*/}
-                                    {/*</p>*/}
-                                    {/*<p className="lesson-location">*/}
-                                        {/*<Link to="https://www.google.com/maps/@50.3813495,30.4955044,18.5z" target="_blank">*/}
-                                            {/*15 н.к., ауд. 224, лабораторна*/}
-                                        {/*</Link>*/}
-                                    {/*</p>*/}
-                                {/*</td>*/}
-                            {/*</tr>*/}
-                            {/*<tr>*/}
-                                {/*<td className="lesson-number">2</td>*/}
-                                {/*<td colSpan="2">*/}
-                                    {/*<p className="lesson-title">Емпіричні методи</p>*/}
-                                    {/*<p className="lesson-teacher">*/}
-                                        {/*<Link to="/teacher">доцент Голуб Б. Л.</Link>*/}
-                                    {/*</p>*/}
-                                    {/*<p className="lesson-location">*/}
-                                        {/*<Link to="https://www.google.com/maps/@50.3813495,30.4955044,18.5z" target="_blank">*/}
-                                            {/*15 н.к., ауд. 230, лекція*/}
-                                        {/*</Link>*/}
-                                    {/*</p>*/}
-                                {/*</td>*/}
-                            {/*</tr>*/}
-                            {/*<tr>*/}
-                                {/*<td className="lesson-number">3</td>*/}
-                                {/*<td colSpan="2">*/}
-                                    {/*<p className="lesson-title">Архітектура та проектування ПЗ</p>*/}
-                                    {/*<p className="lesson-teacher">*/}
-                                        {/*<Link to="/teacher">доцент Голуб Б. Л.</Link>*/}
-                                    {/*</p>*/}
-                                    {/*<p className="lesson-location">*/}
-                                        {/*<Link to="https://www.google.com/maps/@50.3813495,30.4955044,18.5z" target="_blank">*/}
-                                            {/*15 н.к., ауд. 206, лабораторна*/}
-                                        {/*</Link>*/}
-                                    {/*</p>*/}
-                                {/*</td>*/}
-                            {/*</tr>*/}
-                            {/*<tr>*/}
-                                {/*<td className="lesson-number">4</td>*/}
-                                {/*<td colSpan="2">*/}
-                                    {/*<p className="lesson-title">Архітектура та проектування ПЗ</p>*/}
-                                    {/*<p className="lesson-teacher">*/}
-                                        {/*<Link to="/teacher">доцент Голуб Б. Л.</Link>*/}
-                                    {/*</p>*/}
-                                    {/*<p className="lesson-location">*/}
-                                        {/*<Link to="https://www.google.com/maps/@50.3813495,30.4955044,18.5z" target="_blank">*/}
-                                            {/*11 н.к., ауд. 355, лекція*/}
-                                        {/*</Link>*/}
-                                    {/*</p>*/}
-                                {/*</td>*/}
-                            {/*</tr>*/}
-                            {/*/!*Четверг*!/*/}
-                            {/*<tr>*/}
-                                {/*<td rowSpan="2" className="day">Четверг</td>*/}
-                                {/*<td className="lesson-number">4</td>*/}
-                                {/*<td colSpan="2">*/}
-                                    {/*<p className="lesson-title">Технології розподіленого програмування</p>*/}
-                                    {/*<p className="lesson-teacher">*/}
-                                        {/*<Link to="/teacher">доцент Голуб Б. Л.</Link>*/}
-                                    {/*</p>*/}
-                                    {/*<p className="lesson-location">*/}
-                                        {/*<Link to="https://www.google.com/maps/@50.3813495,30.4955044,18.5z" target="_blank">*/}
-                                            {/*15 н.к., ауд. 213, лекція/лабораторна*/}
-                                        {/*</Link>*/}
-                                    {/*</p>*/}
-                                {/*</td>*/}
-                            {/*</tr>*/}
-                            {/*<tr>*/}
-                                {/*<td className="lesson-number">5</td>*/}
-                                {/*<td colSpan="2">*/}
-                                    {/*<p className="lesson-title">Проектний практикум</p>*/}
-                                    {/*<p className="lesson-teacher">*/}
-                                        {/*<Link to="/teacher">доцент Голуб Б. Л.</Link>*/}
-                                    {/*</p>*/}
-                                    {/*<p className="lesson-location">*/}
-                                        {/*<Link to="https://www.google.com/maps/@50.3813495,30.4955044,18.5z" target="_blank">*/}
-                                            {/*15 н.к., ауд. 213, лекція/лабораторна*/}
-                                        {/*</Link>*/}
-                                    {/*</p>*/}
-                                {/*</td>*/}
-                            {/*</tr>*/}
-                            {/*/!*Пятниця*!/*/}
-                            {/*<tr>*/}
-                                {/*<td rowSpan="2" className="day">Пятниця</td>*/}
-                                {/*<td className="lesson-number">1</td>*/}
-                                {/*<td colSpan="2">*/}
-                                    {/*<p className="lesson-title">Економіка програмного забезпечення</p>*/}
-                                    {/*<p className="lesson-teacher">*/}
-                                        {/*<Link to="/teacher">доцент Голуб Б. Л.</Link>*/}
-                                    {/*</p>*/}
-                                    {/*<p className="lesson-location">*/}
-                                        {/*<Link to="https://www.google.com/maps/@50.3813495,30.4955044,18.5z" target="_blank">*/}
-                                            {/*15 н.к., ауд. 206, лабораторна*/}
-                                        {/*</Link>*/}
-                                    {/*</p>*/}
-                                {/*</td>*/}
-                            {/*</tr>*/}
-                            {/*<tr>*/}
-                                {/*<td className="lesson-number">2</td>*/}
-                                {/*<td colSpan="2">*/}
-                                    {/*<p className="lesson-title">Економіка програмного забезпечення</p>*/}
-                                    {/*<p className="lesson-teacher">*/}
-                                        {/*<Link to="/teacher">доцент Голуб Б. Л.</Link>*/}
-                                    {/*</p>*/}
-                                    {/*<p className="lesson-location">*/}
-                                        {/*<Link to="https://www.google.com/maps/@50.3813495,30.4955044,18.5z" target="_blank">*/}
-                                            {/*10 н.к., ауд. 513, лекція*/}
-                                        {/*</Link>*/}
-                                    {/*</p>*/}
-                                {/*</td>*/}
-                            {/*</tr>*/}
+                            {renderLesson(this.state.lesson)}
                         </tbody>
                     </table>
-				</div>
-			</main>
-		);
-	}
+                </div>
+            </main>
+        );
+    }
 }

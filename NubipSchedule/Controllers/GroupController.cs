@@ -19,15 +19,30 @@ namespace NubipSchedule.Controllers
             this.db = db;
         }
         
+        [HttpGet]
+        public JsonResult GetGroupList()
+        {
+            var json = 
+                db.Groups
+                    .Select(s => new
+                    {
+                        Id = s.GroupId,
+                        Title = s.Title
+                    })
+                    .ToList();
+            return new JsonResult(json.AsEnumerable());
+        }
+        
         [HttpGet("{id}")]
         public JsonResult GetGroupInfo(int id)
         {
-            var jsonLessons =
+            var json =
                 db.Groups.Where(g => g.GroupId == id)
                     .Select(g => new
                     {
                         Id = g.GroupId,
                         Title = g.Title,
+                        Faculty = g.Speciality.Faculty.Title, 
                         Speciality = g.Speciality.Title,
                         Teacher = g.Teacher.LastName,
                         Students = g.StudentCount,
@@ -35,7 +50,7 @@ namespace NubipSchedule.Controllers
                         EducationForm = g.EducationForm.Title
                     })
                     .ToList();
-            return new JsonResult(jsonLessons.AsEnumerable());
+            return new JsonResult(json.AsEnumerable());
         }
     }
 }

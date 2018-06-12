@@ -21,9 +21,12 @@ namespace NubipSchedule.Controllers
         {
             var jsonLessons =
                 db.Lessons.Where(l => l.GroupId == id)
+                    .OrderBy(l => l.Time.Number)
+                    .OrderBy(l => l.Day)
                     .Select(l => new
                     {
                         WeekDay = l.Day,
+                        SubjectNumber = l.Time.Number,
                         WeekNumber = l.Week,
                         SubGroupNumber = l.SubGroup,
                         SubjectTitle = l.Curriculum.Subject.Title,
@@ -33,11 +36,11 @@ namespace NubipSchedule.Controllers
                         BuildingLat = l.Auditorium.Building.Latitude,
                         BuildingLong = l.Auditorium.Building.Longitude,
                         Group = l.Group.Title,
+                        TeacherId = l.TeacherId,
                         TeacherName = l.Teacher.Name,
                         TeacherMiddlename = l.Teacher.Middlename,
                         TeacherLastname = l.Teacher.LastName,
                         TeacherAcademic = l.Teacher.Academic.Title,
-                        SubjectNumber = l.Time.Number,
                         TimeStart = l.Time.Start,
                         TimeEnd = l.Time.End
                     })

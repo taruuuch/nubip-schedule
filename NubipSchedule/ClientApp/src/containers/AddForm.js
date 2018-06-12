@@ -2,8 +2,6 @@ import '../style/add.css';
 import React, { Component } from 'react';
 
 export class AddForm extends Component {
-    displayName = AddForm.name;
-
     render() {
         return (
             <main className="container block-container">
