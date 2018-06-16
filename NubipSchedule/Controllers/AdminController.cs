@@ -1,10 +1,10 @@
-﻿using System.Linq;
+﻿using Model;
 using DBRepository;
+using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 
 namespace NubipSchedule.Controllers
 {
-    [Route("api/[controller]")]
     public class AdminController : Controller
     {
         private ApplicationContext db;
@@ -13,31 +13,11 @@ namespace NubipSchedule.Controllers
         {
             this.db = db;
         }
-    }
-    
-    [Route("api/[controller]")]
-    public class AuditoriumController : Controller
-    {
-        private ApplicationContext db;
-
-        public AuditoriumController(ApplicationContext db)
-        {
-            this.db = db;
-        }
         
-        [HttpGet]
-        public JsonResult GetAuditorium()
+        [HttpPost("api/lesson/add")]
+        public IActionResult Post([FromBody]Lesson lesson)
         {
-            var json = 
-                db.Auditoriums
-                    .Select(s => new
-                    {
-                        Id = s.AuditoriumId,
-                        Title = s.Number,
-                        Building = s.Building.Number
-                    })
-                    .ToList();
-            return new JsonResult(json.AsEnumerable());
+            return Ok(db.Lessons.Add(lesson));
         }
     }
 }

@@ -1,14 +1,10 @@
-import React, { Component } from 'react';
-import { SearchForm } from "../components/SearchForm";
+import React, {Component} from 'react';
+import {SearchForm} from "../components/search/form/searchform";
 
 export class Home extends Component {
-	displayName = Home.name
-	
 	render() {
 		return (
-            <div>
-				<SearchForm />
-            </div>
+            <SearchForm />
 		);
 	}
 }

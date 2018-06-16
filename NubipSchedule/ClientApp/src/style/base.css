@@ -1,21 +1,21 @@
 @import url('https://fonts.googleapis.com/css?family=Oswald:200,300,400,500,600,700&subset=cyrillic');
 
 * {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-	font-family: 'Oswald', sans-serif;
-	font-size: 16px;
-	line-height: 1.5;
-	background-color: #eeeeee;
+    font-family: 'Oswald', sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    background-color: #eeeeee;
 }
 
 .container {
-	max-width: 1200px;
-	margin: auto;
+    max-width: 1200px;
+    margin: auto;
 }
 
 a {
@@ -30,26 +30,26 @@ a:focus {
 }
 
 button {
-	padding: 0;
-	border: none;
-	font: inherit;
-	color: inherit;
-	background-color: transparent;
-	cursor: pointer;
+    padding: 0;
+    border: none;
+    font: inherit;
+    color: inherit;
+    background-color: transparent;
+    cursor: pointer;
 }
 
 button::-moz-focus-inner {
-	border: none;
+    border: none;
 }
 
 input {
-	font-family: 'Oswald', sans-serif;
-	font-size: 14px;
-	width: 100%;
-	border: none;
-	border-bottom: 1px solid #bdbdbd;
-	padding: 10px 15px;
-	color: black;
+    font-family: 'Oswald', sans-serif;
+    font-size: 14px;
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid #bdbdbd;
+    padding: 10px 15px;
+    color: black;
 }
 
 input:focus {
@@ -58,21 +58,21 @@ input:focus {
 }
 
 .btn {
-	background-color: #2196f3;
-	font-family: 'Oswald', sans-serif;
-	font-size: 14px;
-	font-weight: 500;
-	color: white;
-	padding: 10px 20px;
-	border-radius: 5px;
+    background-color: #2196f3;
+    font-family: 'Oswald', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
 }
 
 .btn:hover,
 .btn:focus {
-	background-color: #bbdefb;
-	color: white;
-	cursor: pointer;
-	outline: none;
+    background-color: #bbdefb;
+    color: white;
+    cursor: pointer;
+    outline: none;
     transition: ease-in .2s;
 }
 
@@ -81,18 +81,18 @@ input:focus {
 }
 
 .created-by {
-	background-color: #2196f3;
-	position: absolute;
-	bottom: 15px;
-	right: 15px;
-	border-radius: 5px;
-	padding: 5px;
+    background-color: #2196f3;
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    border-radius: 5px;
+    padding: 5px;
 }
 
 .created-by > a {
-	color: white;
-	font-weight: 500;
-	text-decoration: none;
+    color: white;
+    font-weight: 500;
+    text-decoration: none;
 }
 
 .block {

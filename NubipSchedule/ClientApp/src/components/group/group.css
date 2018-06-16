@@ -1,0 +1,85 @@
+.group-page {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.group-page > .group-title {
+    text-align: center;
+    font-weight: 700;
+    margin: 15px 0;
+    font-size: 1.5em;
+    flex: 0 100%;
+}
+
+.group-page > .group-info {
+    flex: 1 0 25%;
+    font-weight: 300;
+}
+
+.group-info .info-description {
+    color: #2196f3;
+}
+
+.group-page > .group-schedule {
+    flex: 1 1 72%;
+    margin-left: 15px;
+}
+
+
+.group-schedule > table {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    border: none;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+.group-schedule > table > thead.header-of-schedule {
+    width: 100%;
+    background-color: #2196f3;
+    border-radius: 5px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
+    color: white;
+    text-align: center;
+}
+
+.group-schedule > table > thead.header-of-schedule > tr > th {
+    padding: 15px 10px;
+}
+
+.group-schedule > table .day {
+    text-align: center;
+}
+
+.group-schedule > table .lesson-number {
+    text-align: center;
+    font-weight: 600;
+}
+
+.group-schedule > table > tbody > tr > td {
+    padding: 15px;
+}
+
+.group-schedule > table > tbody > tr:last-child {
+    border: none;
+}
+
+.group-schedule > table > tbody > tr .lesson-title {
+    font-weight: 700;
+    word-wrap: break-word;
+}
+
+.group-schedule > table > tbody .lesson-teacher {
+    font-weight: 300;
+    font-style: italic;
+}
+
+.group-schedule > table > tbody .lesson-location {
+    font-weight: 300;
+}
+
+.group-schedule > table > tbody .lesson-active {
+    background-color: #bbdefb;
+    border-left: 3px solid #2196f3;
+}

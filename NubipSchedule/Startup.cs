@@ -53,7 +53,7 @@ namespace NubipSchedule
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller}/{action=Index}/{id?}");
+                    template: "api/{controller}/{action}/{id?}");
             });
 
             app.UseSpa(spa =>

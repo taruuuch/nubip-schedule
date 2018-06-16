@@ -1,9 +1,7 @@
-import React, { Component } from 'react';
-import { LoginForm } from "../components/LoginForm";
+import React, {Component} from 'react';
+import {LoginForm} from "../components/admin/login/loginform";
 
 export class Login extends Component {
-    displayName = Login.name
-
     render() {
         return (
             <LoginForm />
