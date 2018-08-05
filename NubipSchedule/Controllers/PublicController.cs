@@ -88,7 +88,7 @@ namespace NubipSchedule.Controllers
             return new JsonResult(json);
         }
         
-        [HttpGet("api/subjecttypes")]
+        [HttpGet("api/subject/types")]
         public JsonResult SubjectType()
         {
             var json = 

@@ -2,19 +2,19 @@
  * Form types
  */
 
-export const day = [
+export const DAY = [
     {id: 1, title: "Понеділок"},
     {id: 2, title: "Вівторок"},
     {id: 3, title: "Середа"},
     {id: 4, title: "Четверг"},
     {id: 5, title: "П'ятниця"}
 ];
-export const subgroup = [
+export const SUB_GROUP = [
     {id: 0, title: "Вся група"},
     {id: 1, title: "Перша підгрупа"},
     {id: 2, title: "Друга підгрупа"}
 ];
-export const week = [
+export const WEEK = [
     {id: 0, title: "Кожна"},
     {id: 1, title: "Чисельник"},
     {id: 2, title: "Знаменник"}

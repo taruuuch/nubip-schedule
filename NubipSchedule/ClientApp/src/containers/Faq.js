@@ -1,10 +1,12 @@
-import React, {Component} from 'react';
-import {Faq} from "../components/page/faq/faq";
+import React, { Component } from 'react';
+import Faq from "../components/page/faq/faq";
 
-export class FaqPage extends Component {
+class FaqPage extends Component {
 	render() {
 		return (
-            <Faq/>
+			<Faq/>
 		);
 	}
 }
+
+export default FaqPage;
