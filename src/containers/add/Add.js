@@ -1,4 +1,4 @@
-import '../style/add.css';
+import './add.css';
 import React, { Component } from 'react';
 
 export class AddPage extends Component {

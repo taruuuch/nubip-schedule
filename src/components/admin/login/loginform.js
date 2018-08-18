@@ -1,5 +1,5 @@
-import React, {Component} from 'C:/Users/taruuuch/AppData/Local/Microsoft/TypeScript/2.9/node_modules/@types/react';
-import {Redirect} from "C:/Users/taruuuch/AppData/Local/Microsoft/TypeScript/2.9/node_modules/@types/react-router-dom";
+import React, { Component } from 'react';
+import { Redirect } from "react-dom";
 
 class LoginForm extends Component {
 	constructor(props) {

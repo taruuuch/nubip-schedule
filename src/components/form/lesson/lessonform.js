@@ -1,5 +1,5 @@
-import '../../../style/add.css';
-import React, { Component } from 'C:/Users/taruuuch/AppData/Local/Microsoft/TypeScript/2.9/node_modules/@types/react';
+import '../form.css';
+import React, { Component } from 'react';
 import { DAY, SUB_GROUP, WEEK, FORM_CLEANER, ADD_LESSON } from "../../../constants";
 import axios from 'axios';
 

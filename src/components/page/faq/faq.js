@@ -1,6 +1,6 @@
 import './faq.css';
-import React, { Component } from 'C:/Users/taruuuch/AppData/Local/Microsoft/TypeScript/2.9/node_modules/@types/react';
-import { Link } from "C:/Users/taruuuch/AppData/Local/Microsoft/TypeScript/2.9/node_modules/@types/react-router-dom";
+import React, { Component } from 'react';
+import { Link } from "react-dom";
 
 class Faq extends Component {
 	render() {

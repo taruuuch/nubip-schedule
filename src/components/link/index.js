@@ -1,6 +1,6 @@
-import React, { Component } from 'C:/Users/taruuuch/AppData/Local/Microsoft/TypeScript/2.9/node_modules/@types/react';
-import { Switch, Route } from "C:/Users/taruuuch/AppData/Local/Microsoft/TypeScript/2.9/node_modules/@types/react-router-dom";
-import Home from '../../containers/Home';
+import React from 'react';
+import { Switch, Route } from "react-router-dom";
+import Home from '../../containers/home/Home';
 import Group from '../group/group';
 import ApiPage from "../../containers/Api";
 import FaqPage from "../../containers/Faq";
@@ -9,21 +9,20 @@ import LoginPage from "../../containers/Login";
 import RequestPage from "../../containers/Request";
 import LessonForm from "../form/lesson/lessonform";
 
-class RouteLink extends Component {
-	render() {
-		return (
-			<Switch>
-				<Route exact path='/' component={Home} />
-				<Route exact path='/group/:id' component={Group} />
-				<Route exact path='/teacher/:id' component={TeacherPage} />
-				<Route exact path='/api' component={ApiPage} />
-				<Route exact path='/faq' component={FaqPage} />
-				<Route exact path='/login' component={LoginPage} />
-				<Route exact path='/add/lesson/' component={LessonForm} />
-				<Route exact path='/request' component={RequestPage} />
-			</Switch>
-		);
-	}
-}
+const RouteLink = () => {
+	return(
+		<Switch>
+			<Route exact path='/' component={Home} />
+			<Route path='/api' component={ApiPage} />
+			<Route path='/faq' component={FaqPage} />
+			<Route path='/login' component={LoginPage} />
+			<Route path='/group/:id' component={Group} />
+			<Route path='/teacher/:id' component={TeacherPage} />
+			{/* <Route path='/admin' component={Admin} /> */}
+			<Route path='/admin/add/lesson/' component={LessonForm} />
+			<Route path='/admin/request' component={RequestPage} />
+		</Switch>
+	);
+};
 
 export default RouteLink;

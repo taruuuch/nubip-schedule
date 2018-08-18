@@ -1,8 +1,7 @@
 import './searchform.css';
-import '../../../style/animation.css';
-import React, { Component } from 'C:/Users/taruuuch/AppData/Local/Microsoft/TypeScript/2.9/node_modules/@types/react';
-import { Link, Redirect } from 'C:/Users/taruuuch/AppData/Local/Microsoft/TypeScript/2.9/node_modules/@types/react-router-dom';
-import { Tab, Tabs, TabList, TabPanel } from 'C:/Users/taruuuch/AppData/Local/Microsoft/TypeScript/2.9/node_modules/@types/react-tabs';
+import React, { Component } from 'react';
+import { Redirect } from 'react-dom';
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import axios from 'axios';
 
 class SearchForm extends Component {
@@ -12,13 +11,13 @@ class SearchForm extends Component {
 		this.state = {
 			speciality: [],
 			group: [],
-            departament: [],
-            teacher: [],
+			departament: [],
+			teacher: [],
 
-            searchGroupId: 4,
-            searchTeacherId: 1,
+			searchGroupId: 4,
+			searchTeacherId: 1,
 
-            toGroup: false,
+			toGroup: false,
 			toTeacher: false,
 		};
 
@@ -32,45 +31,39 @@ class SearchForm extends Component {
 	};
 
 	componentDidMount() {
-		axios.get('/api/specialities')
+		axios.get('http://localhost:5000/api/specialities')
 			.then(res => {
 				const speciality = res.data;
 				this.setState({ speciality });
 			})
 			.catch(function (error) {
-				console.log('====================================');
 				console.log(error);
-				console.log('====================================');
 			});
 
-		axios.get('/api/departaments')
+		axios.get('http://localhost:5000/api/departaments')
 			.then(res => {
 				const departament = res.data;
 				this.setState({ departament });
 			})
 			.catch(function (error) {
-				console.log('====================================');
 				console.log(error);
-				console.log('====================================');
 			});
 	}
 
 
 	handleSpecialityClick(event) {
-		axios.get('/api/speciality/' + event.target.id + "/groups")
+		axios.get('http://localhost:5000/api/speciality/' + event.target.id + "/groups")
 			.then(res => {
 				const group = res.data;
 				this.setState({ group });
 			})
 			.catch(function (error) {
-				console.log('====================================');
 				console.log(error);
-				console.log('====================================');
 			});
 	}
 
 	handleGroupClick(event) {
-		this.state.searchGroupId = event.target.id;
+		this.setState({ searchGroupId: event.target.id })
 	}
 
 	handleGroupSubmit(event) {
@@ -83,24 +76,22 @@ class SearchForm extends Component {
 	}
 
 	handleDepartamentClick(event) {
-		axios.get('/api/departament/' + event.target.id + "/teachers")
+		axios.get('http://localhost:5000/api/departament/' + event.target.id + "/teachers")
 			.then(res => {
 				const teacher = res.data;
 				this.setState({ teacher });
 			})
 			.catch(function (error) {
-				console.log('====================================');
 				console.log(error);
-				console.log('====================================');
 			});
 	}
 
 	handleTeacherClick(event) {
-		this.state.searchTeacherId = event.target.id;
+		this.setState({ searchTeacherId: event.target.id })
 	}
 
 	handleTeacherSubmit(event) {
-		this.state.searchTeacherId = event.target.id
+		this.setState({ searchTeacherId: event.target.id })
 	}
 
 	render() {
@@ -115,7 +106,8 @@ class SearchForm extends Component {
 		const specialityList = this.state.speciality.map(data => {
 				return (
 					<option
-						id={data.id}
+						id={data.id} 
+						key={data.id} 
 						onClick={this.handleSpecialityClick}>
 						{data.title}
 					</option>
@@ -127,6 +119,7 @@ class SearchForm extends Component {
 				return (
 					<option
 						id={data.id}
+						key={data.id} 
 						onClick={this.handleGroupClick}>
 						{data.title}
 					</option>
@@ -138,6 +131,7 @@ class SearchForm extends Component {
 				return (
 					<option
 						id={data.id}
+						key={data.id} 
 						onClick={this.handleDepartamentClick}>
 						{data.title}
 					</option>
@@ -149,6 +143,7 @@ class SearchForm extends Component {
 				return (
 					<option
 						id={data.id}
+						key={data.id} 
 						onClick={this.handleDepartamentClick}>
 						{data.lastName} {data.name} {data.middleName}
 					</option>
