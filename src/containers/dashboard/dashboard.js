@@ -1,9 +1,9 @@
 import React from 'react';
 
-const LessonRender = () => {
+const DashboardPage = () => {
   return(
     <div></div>
   );
 };
 
-export default LessonRender;
+export default DashboardPage;

@@ -16,19 +16,19 @@
   align-self: center;
 }
 
-.navbar .logo {
+.navbar .navbar__logo {
   text-align: center;
 }
 
-.navbar .gotoadmin {
+.navbar .navbar__dashboard {
   text-align: right;
 }
 
-.navbar .gotoadmin > a {
+.navbar .navbar__dashboard > a {
   opacity: .8;
 }
 
-.navbar .gotoadmin > a:hover {
+.navbar .navbar__dashboard > a:hover {
   opacity: 1;
 }
 

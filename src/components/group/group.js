@@ -4,8 +4,8 @@ import axios from 'axios';
 import { renderGroupInfo, renderLesson } from '../../constants/group';
 
 class Group extends Component {
-	constructor(props) {
-		super(props);
+	constructor() {
+		super();
 
 		this.state = {
 			lesson: [],
@@ -13,8 +13,8 @@ class Group extends Component {
 		};
 	}
 
-	componentWillMount() {
-		axios.get('http://localhost:5000/api/v1/groups/' + parseInt(this.props.match.params.id, 10) + '/lessons')
+	componentWillMount = () => {
+		axios.get('http://localhost:5000/api/v1/groups/' + parseInt(this.props.id, 10) + '/lessons')
 			.then(result => {
 				this.setState({
 					lesson: result.data
@@ -22,10 +22,9 @@ class Group extends Component {
 			})
 			.catch(function (error) {
 				console.log(error);
-				throw error;
 			});
 
-		axios.get('http://localhost:5000/api/v1/groups/' + parseInt(this.props.match.params.id, 10))
+		axios.get('http://localhost:5000/api/v1/groups/' + parseInt(this.props.id, 10))
 			.then(result => {
 				this.setState({
 					groupInfo: result.data
@@ -33,7 +32,6 @@ class Group extends Component {
 			})
 			.catch(function (error) {
 				console.log(error);
-				throw error;
 			});
 	}
 

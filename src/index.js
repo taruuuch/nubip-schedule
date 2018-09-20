@@ -5,12 +5,11 @@ import { BrowserRouter } from 'react-router-dom';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 
-const baseUrl = document.getElementsByTagName('base')[0].getAttribute('href');
 const appElement = document.getElementById('app');
 
 ReactDOM.render(
-  <BrowserRouter basename={baseUrl}>
-    <App />
+  <BrowserRouter>
+    <App/>
   </BrowserRouter>,
   appElement);
 

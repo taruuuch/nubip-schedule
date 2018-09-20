@@ -1,10 +1,9 @@
 import './api.css';
-import React, { Component } from 'react';
+import React from 'react';
 
-class Api extends Component {
-	render() {
-		return (
-			<main className="container block-container">
+const ApiPage = () => {
+	return (
+		<main className="container block-container">
 				<div className="api-info-block block">
 					<div className="title">Публічне API</div>
 					<div className="description">
@@ -41,8 +40,7 @@ class Api extends Component {
 					</div>
 				</div>
 			</main>
-		);
-	}
+	);
 }
 
-export default Api;
+export default ApiPage;

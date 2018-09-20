@@ -1,11 +1,10 @@
 import './faq.css';
-import React, { Component } from 'react';
-import { Link } from "react-dom";
+import React from 'react';
+import { Link } from 'react-router-dom';
 
-class Faq extends Component {
-	render() {
-		return (
-			<main className="container block-container">
+const FaqPage = () => {
+	return (
+		<main className="container block-container">
 				<div className="faq-info-block block">
 					<div className="help-schedule">
 						<div className="title">Пояснення до розкладу</div>
@@ -68,8 +67,7 @@ class Faq extends Component {
 					</div>
 				</div>
 			</main>
-		);
-	}
+	);
 }
 
-export default Faq;
+export default FaqPage;

@@ -1,14 +1,15 @@
 import './add.css';
-import React, { Component } from 'react';
+import React from 'react';
+import LessonForm from '../../components/form/lesson/lessonform'
 
-export class AddPage extends Component {
-	render() {
-		return (
-			<main className="container block-container">
-				<div className="add-block block">
-					
-				</div>
-			</main>
-		);
-	}
-}
+const AddPage = () => {
+	return (
+		<main className="container block-container">
+			<div className="add-block block">
+				<LessonForm/>
+			</div>
+		</main>
+	);
+};
+
+export default AddPage;

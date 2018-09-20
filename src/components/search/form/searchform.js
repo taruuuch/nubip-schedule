@@ -1,6 +1,6 @@
 import './searchform.css';
 import React, { Component } from 'react';
-import { Redirect } from 'react-dom';
+import { Redirect } from 'react-router-dom';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import axios from 'axios';
 
@@ -17,8 +17,8 @@ class SearchForm extends Component {
 			searchGroupId: 4,
 			searchTeacherId: 1,
 
-			toGroup: false,
-			toTeacher: false,
+			redirectToGroup: false,
+			redirectToTeacher: false,
 		};
 
 		this.handleSpecialityClick = this.handleSpecialityClick.bind(this);
@@ -30,7 +30,7 @@ class SearchForm extends Component {
 		this.handleTeacherSubmit = this.handleTeacherSubmit.bind(this);
 	};
 
-	componentDidMount() {
+	componentDidMount = () => {
 		axios.get('http://localhost:5000/api/specialities')
 			.then(res => {
 				const speciality = res.data;
@@ -50,8 +50,7 @@ class SearchForm extends Component {
 			});
 	}
 
-
-	handleSpecialityClick(event) {
+	handleSpecialityClick = (event) => {
 		axios.get('http://localhost:5000/api/speciality/' + event.target.id + "/groups")
 			.then(res => {
 				const group = res.data;
@@ -62,20 +61,19 @@ class SearchForm extends Component {
 			});
 	}
 
-	handleGroupClick(event) {
-		this.setState({ searchGroupId: event.target.id })
+	handleGroupClick = (event) => {
+		this.setState({
+			searchGroupId: event.target.id
+		})
 	}
 
-	handleGroupSubmit(event) {
-		event.preventDefault();
-
-		this.setState(() => ({
-				toGroup: true
-			})
-		)
+	handleGroupSubmit = () => {
+		this.setState({
+			redirectToGroup: true
+		});
 	}
 
-	handleDepartamentClick(event) {
+	handleDepartamentClick = (event) => {
 		axios.get('http://localhost:5000/api/departament/' + event.target.id + "/teachers")
 			.then(res => {
 				const teacher = res.data;
@@ -86,20 +84,24 @@ class SearchForm extends Component {
 			});
 	}
 
-	handleTeacherClick(event) {
-		this.setState({ searchTeacherId: event.target.id })
+	handleTeacherClick = (event) => {
+		this.setState({
+			searchTeacherId: event.target.id
+		})
 	}
 
-	handleTeacherSubmit(event) {
-		this.setState({ searchTeacherId: event.target.id })
+	handleTeacherSubmit =() => {
+		this.setState({
+			redirectToTeacher: true
+		});
 	}
 
 	render() {
-		if (this.state.toGroup === true) {
+		if (this.state.redirectToGroup === true) {
 			return <Redirect to={'/group/' + this.state.searchGroupId} />
 		}
 
-		if (this.state.toTeacher === true) {
+		if (this.state.redirectToTeacher === true) {
 			return <Redirect to={'/teacher/' + this.state.searchTeacherId} />
 		}
 
