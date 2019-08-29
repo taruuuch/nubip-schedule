@@ -18,14 +18,10 @@ _Feedback from the Chair of Computer Science:_
 
 ## **Technologies**
 
-_Backend_
-
-* C#
-* .NET Core 2.0
-
-_Frontend_
-
-* React
+* Vue
+* Vuex
+* TypeScript
+* HTML5
 * CSS3
 
 <!-- Test scripts
