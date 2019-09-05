@@ -46,4 +46,4 @@ Have a bug or a feature request? [Please open a new issue.](https://github.com/t
 
 ## **License**
 
-https://opensource.org/licenses
+https://opensource.org/licenses/MIT
