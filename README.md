@@ -8,12 +8,6 @@
 
 Schedule for **National University of Life and Environmental Sciences of Ukraine**
 
-
-## **Features**
-
-_Feedback from the Chair of Computer Science:_
-> no
-
 ## **Technologies**
 
 _Backend_
@@ -38,7 +32,7 @@ print('test');
 
 ## **Documentation**
 
-123
+https://github.com/taruuuch/nules-web-app/wiki
 
 ## **Bug tracker**
 
