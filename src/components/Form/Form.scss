@@ -1,0 +1,11 @@
+.input {
+	border: none;
+	background-color: var(--button-color);
+	&:focus {
+		border: none;
+		outline: none;
+	}
+	&:hover {
+		background-color: var(--hover-button-color);
+	}
+}
