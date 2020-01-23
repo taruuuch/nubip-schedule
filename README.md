@@ -8,20 +8,26 @@
 
 Schedule for **National University of Life and Environmental Sciences of Ukraine**
 
+
+## **Features**
+
+_in future :)_
+> yes
+
 ## **Technologies**
 
 _Backend_
 
 * Node.js
-* Express (web framework for create api)
-* MongoDb (database)
-* Passport (for auth users)
+* Express
+* MongoDb
+* JWT
+* Swagger
 
 _Frontend_
 
-* Vuejs
-* Vuex
-* TypeScript
+* React/Vue
+* Redux/Vuex
 * CSS3
 
 <!-- Test scripts
